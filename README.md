@@ -1,6 +1,6 @@
 <div>
-<img style="width: 300px" src="https://drive.google.com/drive/folders/1lrtIcho36gqeIR8N5ee6B2XQjrm9wPqq"></img>
-<img style="width: 100px" src="./assets/images/gsoc.png"></img>
+<img style="width: 300px" src="https://raw.githubusercontent.com/kr-2003/sugarizer-gsoc-proposal/main/assets/images/sugarizer.png"></img>
+<img style="width: 100px" src="https://raw.githubusercontent.com/kr-2003/sugarizer-gsoc-proposal/main/assets/images/gsoc.png"></img>
 </div>
 
 # GSOC'23 Proposal - Sugarlabs
@@ -55,7 +55,7 @@ Each screen should integrate unit testing and code coverage.
 
 This project requires us to implement Sugarizer Core UI components in VueJS components. I have already tried to do some work.  [Click here](https://github.com/kr-2003/sugarizer_personal_vuejs) for the repo. The file structure is like this:
 
-<img src="https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/images/2f2d497b35f880e50a0ce6654fdcc3bea1a7269883cafcde.png" width="50%" height="50%"></img>
+<img src="https://raw.githubusercontent.com/kr-2003/sugarizer-gsoc-proposal/main/assets/images/str.png" width="50%" height="50%"></img>
 
 - The project is using a build setup based on [Vite](https://vitejs.dev/) and allowing us to use Vue [Single-File Components](https://vuejs.org/guide/scaling-up/sfc.html) (SFCs).
 - I have added Vitest for unit testing.
@@ -124,7 +124,7 @@ This will give the translation of 'Login' in language that is set as 'locale' wh
 
 #### First Screen
 
-![](https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/animations/baf6a1a33467c2d498a15ef005f8ee82648cb25e1fcd142a.gif)
+![](https://raw.githubusercontent.com/kr-2003/sugarizer-gsoc-proposal/main/assets/images/firstScreen.gif)
 
 - All the components of firstScreen are under “/src/components/firstScreen”.
 - The page for firstScreen is under “src/views/FirstScreenView.vue”.
@@ -170,7 +170,7 @@ import LoginView from '../components/firstScreen/LoginView.vue'
 
 #### Login Screen
 
-<img src="/assets/images/login.gif"></img>
+<img src="https://raw.githubusercontent.com/kr-2003/sugarizer-gsoc-proposal/main/assets/images/loginScreen.gif"></img>
 
 - All the components of loginScreen are under “/src/components/loginScreen”.
 - The page for loginScreen is under “src/views/LoginView.vue”.
@@ -222,7 +222,7 @@ import loginInput from '../components/loginScreen/loginInput.vue'
 #### Home View
 
 This is the HomeView of original Sugarizer.
-<img style="margin-top: 20px" src="assets/images/home.png"></img>
+<img style="margin-top: 20px" src="https://raw.githubusercontent.com/kr-2003/sugarizer-gsoc-proposal/main/assets/images/homeView.png"></img>
 
 - This is [link](https://github.com/kr-2003/sugarizer/blob/master/js/homeview.js) to homeview.js of original sugarizer.
 - This contains the javascript logic of the homeview.
@@ -294,7 +294,7 @@ This is the HomeView of original Sugarizer.
 
 - This is settings component of main Sugarizer.
 
-<img src="./assets/images/settings.png"></img>
+<img src="https://raw.githubusercontent.com/kr-2003/sugarizer-gsoc-proposal/main/assets/images/settings.png"></img>
 
 - This is [link](https://github.com/kr-2003/sugarizer/blob/master/js/dialog.js) settings.js of original sugarizer.
 - We can implement dialog in the same way as we will be implementing other components.
