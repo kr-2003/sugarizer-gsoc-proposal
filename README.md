@@ -1,4 +1,9 @@
-## GSOC'23 Proposal - Sugarlabs
+<div>
+<img style="width: 300px" src="./assets/images/sugarizer.png"></img>
+<img style="width: 100px" src="./assets/images/gsoc.png"></img>
+</div>
+
+# GSOC'23 Proposal - Sugarlabs
 
 ### Sugarizer VueJS Core
 
@@ -219,7 +224,6 @@ import loginInput from '../components/loginScreen/loginInput.vue'
 This is the HomeView of original Sugarizer.
 <img style="margin-top: 20px" src="assets/images/home.png"></img>
 
-
 - This is [link](https://github.com/kr-2003/sugarizer/blob/master/js/homeview.js) to homeview.js of original sugarizer.
 - This contains the javascript logic of the homeview.
 - After seeing the code, and seeing how the website works, I obeserved that most of the components are dynamically rendered.
@@ -273,31 +277,30 @@ This is the HomeView of original Sugarizer.
   </template>
   ```
 
-    * The above code when clicked on toggle button, the "toggle" method is called and accordingly current component is changed.
-    * The components is bind to currentComponent.
-    * This is how we can render dynamic components in VueJS.
+  - The above code when clicked on toggle button, the "toggle" method is called and accordingly current component is changed.
+  - The components is bind to currentComponent.
+  - This is how we can render dynamic components in VueJS.
 
-
-* homeview.js is a huge file with around 900 lines of code. This isn't good practice. 
+* homeview.js is a huge file with around 900 lines of code. This isn't good practice.
 * We can refactor this code and split multiple functions into different files.
-* And then import these functions in the main component in ```<script>``` tag.
+* And then import these functions in the main component in `<script>` tag.
 
 #### List View
 
-* This is [link](https://github.com/kr-2003/sugarizer/blob/master/js/listview.js) listview.js of original sugarizer.
-* The way explained about HomeView, we can implement ListView in the same way.
+- This is [link](https://github.com/kr-2003/sugarizer/blob/master/js/listview.js) listview.js of original sugarizer.
+- The way explained about HomeView, we can implement ListView in the same way.
 
 #### Settings
 
-* This is settings component of main Sugarizer.
+- This is settings component of main Sugarizer.
 
 <img src="./assets/images/settings.png"></img>
 
-* This is [link](https://github.com/kr-2003/sugarizer/blob/master/js/dialog.js) settings.js of original sugarizer.
-* We can implement dialog in the same way as we will be implementing other components.
-* We can implement modal/dialog this way:
+- This is [link](https://github.com/kr-2003/sugarizer/blob/master/js/dialog.js) settings.js of original sugarizer.
+- We can implement dialog in the same way as we will be implementing other components.
+- We can implement modal/dialog this way:
 
-```javascript 
+```javascript
 <template>
   <div id="app">
     <button
@@ -341,40 +344,40 @@ This is the HomeView of original Sugarizer.
 
 ```
 
-* The core concept behind this code is same as that for dynamically rendering components.
-* Just this code is more specific towards dialog/modal.
-* Initially, isModalVisible is false for the components.
-* And it is toggled when appropriate method is called upon clicking.
-
+- The core concept behind this code is same as that for dynamically rendering components.
+- Just this code is more specific towards dialog/modal.
+- Initially, isModalVisible is false for the components.
+- And it is toggled when appropriate method is called upon clicking.
 
 #### Internationalization
-* Currently, the cv-frontend-vue repo has ‘vue-i18n’ for internationalization.
-* We can use ChatGPT for phrase translations.
-* Following our some websites for translations:
-  * Google Translate
-  * Yandex Translate
-  * Reverso
-  * Translatedict
-* We can use the above websites for getting translations for the phrases that we need to get translated.
 
-* We need translation of many words and each phrase needs to be translated into 8 languages. This might take a lot of time and effort, if we are doing it one by one/manually.
-* Therefore, to prevent unnecessary work, I will automate this work by using the API of above websites.
-* For example, Reverso has reverso-api for node.
+- Currently, the cv-frontend-vue repo has ‘vue-i18n’ for internationalization.
+- We can use ChatGPT for phrase translations.
+- Following our some websites for translations:
+  - Google Translate
+  - Yandex Translate
+  - Reverso
+  - Translatedict
+- We can use the above websites for getting translations for the phrases that we need to get translated.
 
-```npm install reverso-api```
+- We need translation of many words and each phrase needs to be translated into 8 languages. This might take a lot of time and effort, if we are doing it one by one/manually.
+- Therefore, to prevent unnecessary work, I will automate this work by using the API of above websites.
+- For example, Reverso has reverso-api for node.
+
+`npm install reverso-api`
 
 ```javascript
 const Reverso = require("reverso-api");
 const reverso = new Reverso();
 reverso.getTranslation(
-    'how is going?',
-    'english',
-    'chinese',
-    (err, response) => {
-        if (err) throw new Error(err.message)
-        console.log(response)
-    }
-)
+  "how is going?",
+  "english",
+  "chinese",
+  (err, response) => {
+    if (err) throw new Error(err.message);
+    console.log(response);
+  }
+);
 ```
 
 ```javascript
@@ -399,20 +402,22 @@ reverso.getTranslation(
 }
 ```
 
-* Therefore, we can get results in ‘response.translation’.
-
+- Therefore, we can get results in ‘response.translation’.
 
 #### Dockerize Application:
+
 There are several advantages to Dockerising an application:
-* Portability: Dockerising an application makes it highly portable, as it ensures that the application runs consistently across different environments. This means that you can move your application from one machine to another, or from one cloud provider to another, without having to worry about differences in the underlying infrastructure.
-* Scalability: Docker makes it easy to scale up or down an application by allowing you to easily create or destroy containers as needed. This makes it easy to manage the resources required to run an application and ensures that you only use what you need.
-* Isolation: Docker provides a high level of isolation between the application and the host system, which reduces the risk of conflicts and improves security. Each container runs as a separate process, with its own file system, network stack, and resources, which makes it easier to manage dependencies and versioning.
-* Resource efficiency: Docker containers use less resources compared to virtual machines, as they share the host operating system kernel. This means that you can run more containers on a single machine, which can save costs on hardware and infrastructure.
-* Rapid deployment: Docker makes it easy to deploy new versions of an application quickly and efficiently. By packaging the application and its dependencies into a container, you can deploy it to any environment that supports Docker, without having to worry about installation or configuration.
-* DevOps Integration: Docker is widely used in DevOps workflows and enables teams to work together more efficiently. With Docker, developers can create an environment that mirrors production, which allows them to develop and test code locally before deploying it. Additionally, Docker enables continuous integration and deployment (CI/CD) pipelines, which automate the build, testing, and deployment of applications.
+
+- Portability: Dockerising an application makes it highly portable, as it ensures that the application runs consistently across different environments. This means that you can move your application from one machine to another, or from one cloud provider to another, without having to worry about differences in the underlying infrastructure.
+- Scalability: Docker makes it easy to scale up or down an application by allowing you to easily create or destroy containers as needed. This makes it easy to manage the resources required to run an application and ensures that you only use what you need.
+- Isolation: Docker provides a high level of isolation between the application and the host system, which reduces the risk of conflicts and improves security. Each container runs as a separate process, with its own file system, network stack, and resources, which makes it easier to manage dependencies and versioning.
+- Resource efficiency: Docker containers use less resources compared to virtual machines, as they share the host operating system kernel. This means that you can run more containers on a single machine, which can save costs on hardware and infrastructure.
+- Rapid deployment: Docker makes it easy to deploy new versions of an application quickly and efficiently. By packaging the application and its dependencies into a container, you can deploy it to any environment that supports Docker, without having to worry about installation or configuration.
+- DevOps Integration: Docker is widely used in DevOps workflows and enables teams to work together more efficiently. With Docker, developers can create an environment that mirrors production, which allows them to develop and test code locally before deploying it. Additionally, Docker enables continuous integration and deployment (CI/CD) pipelines, which automate the build, testing, and deployment of applications.
 
 **Steps to dockerize Vue Application:**
-* Create a Dockerfile: Create a Dockerfile in the root directory of your Vue application. The Dockerfile is a text file that contains instructions on how to build a Docker image. It specifies the base image to use, install dependencies, copies the application code into the image, and specifies the command to run when the image is started.
+
+- Create a Dockerfile: Create a Dockerfile in the root directory of your Vue application. The Dockerfile is a text file that contains instructions on how to build a Docker image. It specifies the base image to use, install dependencies, copies the application code into the image, and specifies the command to run when the image is started.
 
 ```Dockerfile
 FROM node
@@ -430,35 +435,36 @@ EXPOSE 8080
 CMD ["npm", "run", “dev”]
 ```
 
-* Build the Docker image: Run the docker build command to build the Docker image using the Dockerfile.
+- Build the Docker image: Run the docker build command to build the Docker image using the Dockerfile.
 
-```docker build -t my-vue-app .```
+`docker build -t my-vue-app .`
 
-* Run the Docker container: Run the docker run command to start the Docker container using the Docker image that you just built.
+- Run the Docker container: Run the docker run command to start the Docker container using the Docker image that you just built.
 
-```docker run -p 8080:8080 my-vue-app```
-
+`docker run -p 8080:8080 my-vue-app`
 
 ### Additional Information
+
 **Why will I be able to complete my project in the timeline I have described?**
-* Planning - A well planned project is more likely to be completed within the timeline. I have already planned out even the minute details for the project.
-* Communication - Effective communication is critical for project completion. I have good communication skills and will be in regular touch with my mentors.
-* Flexibility - Projects are unpredictable and changes are bound to occur. Being flexible and adaptable to changes can keep the project on track and within the timeline.
-*  My past experience -
-   * I have been contributing to Sugarizer. This project requires us to convert Sugarizer core components into Vue components. 
-Link - https://github.com/kr-2003/sugarizer_personal_vuejs
-   * For the past 1 month I have been regularly contributing to the cv-frontend-vue repo of CircuitVerse.
-These are my [contributions](https://docs.google.com/document/d/1CNwTw03eeCbv0DFPIlHoaVQdQ3bo0R-QOg13pppkWjQ/edit) so far.
-   *  My team got 3rd rank in the Enosium(hackathon).  We made a fully deployed website that took various details from the user and then provided an accurate prediction of their scope for repaying the loan using Next.JS, FastAPI, Scikit-Learn, Pandas and Numpy.
-Link - https://github.com/kr-2003/enosium_track_1
-   * My team got selected in top 20 in India for HackNITR hackathon. We made an Expenses Tracker App which can track your income and expenses by reading your transaction messages, and then show you, in one place your current financial standing using React Native.
-Link - https://github.com/kr-2003/expenses-tracker-react-native
-   * Route Planning for InterIIT - A last mile hub stores and delivers items. Efficient hubs require tools to measure dimensions, weight, and condition. Such tools can estimate volumetric weight by scanning items and flagging any errors. Created a website to integrate IOT and Algorithmic parts using Next.JS and Fast API.
-Link - https://github.com/DaemonLab/Route-Planning
-   * Social Media Website - It is a responsive website that allows different users to create profile, login, post content, upload images and connect with other users easily. It is a fully functional social media app built with ReactJS and MySQL.
-Link - https://github.com/kr-2003/social_media_dbms_2
-   * Created a responsive Web Application that will host 3 to 4 games. Players will be able to start a new game and invite others to join that game. A user can login/signup and can create an account. After that one is eligible to play 2- player/multiplayer games. These games are written in Javascript and are integrated with the backend. Socket.IO is used to make rooms, shareable links and change turns on client side. After each game history is stored in our database and is being displayed/updated in the profile section. Similarly, leaderboard for each game is being updated in leaderboard section. A user can visit other users' profile by clicking on their name in history or followers or leaderboard section. A user can also follow other users.
-Link - https://github.com/kr-2003/IITISOC_OnlineGamesWebsite
-   * Over the course of the past year, I have gained coding experience and developed a strong passion for programming. I am committed to my work and tend to be very driven, always striving to complete tasks ahead of schedule.
+
+- Planning - A well planned project is more likely to be completed within the timeline. I have already planned out even the minute details for the project.
+- Communication - Effective communication is critical for project completion. I have good communication skills and will be in regular touch with my mentors.
+- Flexibility - Projects are unpredictable and changes are bound to occur. Being flexible and adaptable to changes can keep the project on track and within the timeline.
+- My past experience -
+  - I have been contributing to Sugarizer. This project requires us to convert Sugarizer core components into Vue components.
+    Link - https://github.com/kr-2003/sugarizer_personal_vuejs
+  - For the past 1 month I have been regularly contributing to the cv-frontend-vue repo of CircuitVerse.
+    These are my [contributions](https://docs.google.com/document/d/1CNwTw03eeCbv0DFPIlHoaVQdQ3bo0R-QOg13pppkWjQ/edit) so far.
+  - My team got 3rd rank in the Enosium(hackathon). We made a fully deployed website that took various details from the user and then provided an accurate prediction of their scope for repaying the loan using Next.JS, FastAPI, Scikit-Learn, Pandas and Numpy.
+    Link - https://github.com/kr-2003/enosium_track_1
+  - My team got selected in top 20 in India for HackNITR hackathon. We made an Expenses Tracker App which can track your income and expenses by reading your transaction messages, and then show you, in one place your current financial standing using React Native.
+    Link - https://github.com/kr-2003/expenses-tracker-react-native
+  - Route Planning for InterIIT - A last mile hub stores and delivers items. Efficient hubs require tools to measure dimensions, weight, and condition. Such tools can estimate volumetric weight by scanning items and flagging any errors. Created a website to integrate IOT and Algorithmic parts using Next.JS and Fast API.
+    Link - https://github.com/DaemonLab/Route-Planning
+  - Social Media Website - It is a responsive website that allows different users to create profile, login, post content, upload images and connect with other users easily. It is a fully functional social media app built with ReactJS and MySQL.
+    Link - https://github.com/kr-2003/social_media_dbms_2
+  - Created a responsive Web Application that will host 3 to 4 games. Players will be able to start a new game and invite others to join that game. A user can login/signup and can create an account. After that one is eligible to play 2- player/multiplayer games. These games are written in Javascript and are integrated with the backend. Socket.IO is used to make rooms, shareable links and change turns on client side. After each game history is stored in our database and is being displayed/updated in the profile section. Similarly, leaderboard for each game is being updated in leaderboard section. A user can visit other users' profile by clicking on their name in history or followers or leaderboard section. A user can also follow other users.
+    Link - https://github.com/kr-2003/IITISOC_OnlineGamesWebsite
+  - Over the course of the past year, I have gained coding experience and developed a strong passion for programming. I am committed to my work and tend to be very driven, always striving to complete tasks ahead of schedule.
 
 ## THANKS
