@@ -401,6 +401,44 @@ reverso.getTranslation(
 
 * Therefore, we can get results in ‘response.translation’.
 
+
+#### Dockerize Application:
+There are several advantages to Dockerising an application:
+* Portability: Dockerising an application makes it highly portable, as it ensures that the application runs consistently across different environments. This means that you can move your application from one machine to another, or from one cloud provider to another, without having to worry about differences in the underlying infrastructure.
+* Scalability: Docker makes it easy to scale up or down an application by allowing you to easily create or destroy containers as needed. This makes it easy to manage the resources required to run an application and ensures that you only use what you need.
+* Isolation: Docker provides a high level of isolation between the application and the host system, which reduces the risk of conflicts and improves security. Each container runs as a separate process, with its own file system, network stack, and resources, which makes it easier to manage dependencies and versioning.
+* Resource efficiency: Docker containers use less resources compared to virtual machines, as they share the host operating system kernel. This means that you can run more containers on a single machine, which can save costs on hardware and infrastructure.
+* Rapid deployment: Docker makes it easy to deploy new versions of an application quickly and efficiently. By packaging the application and its dependencies into a container, you can deploy it to any environment that supports Docker, without having to worry about installation or configuration.
+* DevOps Integration: Docker is widely used in DevOps workflows and enables teams to work together more efficiently. With Docker, developers can create an environment that mirrors production, which allows them to develop and test code locally before deploying it. Additionally, Docker enables continuous integration and deployment (CI/CD) pipelines, which automate the build, testing, and deployment of applications.
+
+**Steps to dockerize Vue Application:**
+* Create a Dockerfile: Create a Dockerfile in the root directory of your Vue application. The Dockerfile is a text file that contains instructions on how to build a Docker image. It specifies the base image to use, install dependencies, copies the application code into the image, and specifies the command to run when the image is started.
+
+```Dockerfile
+FROM node
+
+WORKDIR /app
+
+COPY ./package.json /app
+
+RUN npm install
+
+COPY . /app
+
+EXPOSE 8080
+
+CMD ["npm", "run", “dev”]
+```
+
+* Build the Docker image: Run the docker build command to build the Docker image using the Dockerfile.
+
+```docker build -t my-vue-app .```
+
+* Run the Docker container: Run the docker run command to start the Docker container using the Docker image that you just built.
+
+```docker run -p 8080:8080 my-vue-app```
+
+
 ### Additional Information
 **Why will I be able to complete my project in the timeline I have described?**
 * Planning - A well planned project is more likely to be completed within the timeline. I have already planned out even the minute details for the project.
