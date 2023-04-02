@@ -1,5 +1,5 @@
 <div>
-<img style="width: 300px" src="./assets/images/sugarizer.png"></img>
+<img style="width: 300px" src="https://drive.google.com/drive/folders/1lrtIcho36gqeIR8N5ee6B2XQjrm9wPqq"></img>
 <img style="width: 100px" src="./assets/images/gsoc.png"></img>
 </div>
 
