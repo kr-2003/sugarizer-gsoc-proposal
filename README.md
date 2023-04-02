@@ -345,3 +345,82 @@ This is the HomeView of original Sugarizer.
 * Just this code is more specific towards dialog/modal.
 * Initially, isModalVisible is false for the components.
 * And it is toggled when appropriate method is called upon clicking.
+
+
+#### Internationalization
+* Currently, the cv-frontend-vue repo has ‘vue-i18n’ for internationalization.
+* We can use ChatGPT for phrase translations.
+* Following our some websites for translations:
+  * Google Translate
+  * Yandex Translate
+  * Reverso
+  * Translatedict
+* We can use the above websites for getting translations for the phrases that we need to get translated.
+
+* We need translation of many words and each phrase needs to be translated into 8 languages. This might take a lot of time and effort, if we are doing it one by one/manually.
+* Therefore, to prevent unnecessary work, I will automate this work by using the API of above websites.
+* For example, Reverso has reverso-api for node.
+
+```npm install reverso-api```
+
+```javascript
+const Reverso = require("reverso-api");
+const reverso = new Reverso();
+reverso.getTranslation(
+    'how is going?',
+    'english',
+    'chinese',
+    (err, response) => {
+        if (err) throw new Error(err.message)
+        console.log(response)
+    }
+)
+```
+
+```javascript
+{
+  ok: true,
+  text: 'how is going?',
+  source: 'english',
+  target: 'chinese',
+  translations: [ '情况如何？' ],
+  detected_language: 'eng',
+  voice: 'https://voice.reverso.net/RestPronunciation.svc/v1/output=json/GetVoiceStream/voiceName=Lulu22k?inputText=5oOF5Ya15aaC5L2V77yf',
+  context: {
+    examples: [
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object]
+    ],
+    rude: false
+  }
+}
+```
+
+* Therefore, we can get results in ‘response.translation’.
+
+### Additional Information
+**Why will I be able to complete my project in the timeline I have described?**
+* Planning - A well planned project is more likely to be completed within the timeline. I have already planned out even the minute details for the project.
+* Communication - Effective communication is critical for project completion. I have good communication skills and will be in regular touch with my mentors.
+* Flexibility - Projects are unpredictable and changes are bound to occur. Being flexible and adaptable to changes can keep the project on track and within the timeline.
+*  My past experience -
+   * I have been contributing to Sugarizer. This project requires us to convert Sugarizer core components into Vue components. 
+Link - https://github.com/kr-2003/sugarizer_personal_vuejs
+   * For the past 1 month I have been regularly contributing to the cv-frontend-vue repo of CircuitVerse.
+These are my [contributions](https://docs.google.com/document/d/1CNwTw03eeCbv0DFPIlHoaVQdQ3bo0R-QOg13pppkWjQ/edit) so far.
+   *  My team got 3rd rank in the Enosium(hackathon).  We made a fully deployed website that took various details from the user and then provided an accurate prediction of their scope for repaying the loan using Next.JS, FastAPI, Scikit-Learn, Pandas and Numpy.
+Link - https://github.com/kr-2003/enosium_track_1
+   * My team got selected in top 20 in India for HackNITR hackathon. We made an Expenses Tracker App which can track your income and expenses by reading your transaction messages, and then show you, in one place your current financial standing using React Native.
+Link - https://github.com/kr-2003/expenses-tracker-react-native
+   * Route Planning for InterIIT - A last mile hub stores and delivers items. Efficient hubs require tools to measure dimensions, weight, and condition. Such tools can estimate volumetric weight by scanning items and flagging any errors. Created a website to integrate IOT and Algorithmic parts using Next.JS and Fast API.
+Link - https://github.com/DaemonLab/Route-Planning
+   * Social Media Website - It is a responsive website that allows different users to create profile, login, post content, upload images and connect with other users easily. It is a fully functional social media app built with ReactJS and MySQL.
+Link - https://github.com/kr-2003/social_media_dbms_2
+   * Created a responsive Web Application that will host 3 to 4 games. Players will be able to start a new game and invite others to join that game. A user can login/signup and can create an account. After that one is eligible to play 2- player/multiplayer games. These games are written in Javascript and are integrated with the backend. Socket.IO is used to make rooms, shareable links and change turns on client side. After each game history is stored in our database and is being displayed/updated in the profile section. Similarly, leaderboard for each game is being updated in leaderboard section. A user can visit other users' profile by clicking on their name in history or followers or leaderboard section. A user can also follow other users.
+Link - https://github.com/kr-2003/IITISOC_OnlineGamesWebsite
+   * Over the course of the past year, I have gained coding experience and developed a strong passion for programming. I am committed to my work and tend to be very driven, always striving to complete tasks ahead of schedule.
+
+## THANKS
